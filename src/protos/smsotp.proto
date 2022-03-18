@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./src/pb";
+
+// option go_package = "OtpPB";
+
+message OtpRequest {
+    string mobile_number = 1;
+}
+
+message OtpResponse {
+    string status = 1;
+    string status_code = 2;
+    string reason =3;
+    // string otp = 1;
+}
+
+message OtpValidateRequest {
+    string mobile_number = 1;
+    string otp = 2;
+}
+
+message OtpValidateResponse {
+    bool validated = 1;
+}
+
+service OtpService{
+    rpc OtpSend(OtpRequest) returns (OtpResponse) {};
+    rpc OtpValidate(OtpValidateRequest) returns (OtpValidateResponse) {};
+}

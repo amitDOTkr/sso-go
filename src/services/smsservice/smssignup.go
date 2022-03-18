@@ -1,0 +1,5 @@
+package smsservice
+
+func SmsSignup() {
+
+}
